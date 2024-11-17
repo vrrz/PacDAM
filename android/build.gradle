@@ -27,10 +27,20 @@ android {
         versionCode 1
         versionName "1.0"
     }
+   /* signingConfigs {
+        release {
+            storeFile file("path/to/your/keystore.jks")
+            storePassword "yourKeystorePassword"
+            keyAlias "yourKeyAlias"
+            keyPassword "yourKeyPassword"
+        }
+    }*/
     buildTypes {
         release {
             minifyEnabled true
+            //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -43,6 +53,7 @@ android {
         jvmTarget = "17"
     }
 }
+
 kotlin {
     jvmToolchain(17)
 }
