@@ -1,5 +1,6 @@
 buildscript {
-    ext.kotlin_version = '2.0.0-RC1'
+   //ext.kotlin_version = '2.0.0-RC1'
+    ext.kotlin_version = '1.9.22'
 
     repositories {
         google()
@@ -9,9 +10,9 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.4.2'
+        classpath 'com.android.tools.build:gradle:8.1.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22"
-        classpath 'com.google.gms:google-services:4.4.2' // Plugin de Google Services
+        classpath 'com.google.gms:google-services:4.4.2'
     }
 }
 plugins {
@@ -40,19 +41,6 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
-project(":desktop") {
-    apply plugin: "java-library"
-    dependencies {
-        implementation project(":core")
-        api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
-        api "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"
-    }
-}
-
 project(":android") {
     apply plugin: "com.android.application"
     configurations { natives }
@@ -61,8 +49,7 @@ project(":android") {
         defaultConfig {
             applicationId "com.tuapp.pacdam"
             minSdkVersion 21
-            //noinspection OldTargetApi
-            targetSdkVersion 34
+            targetSdkVersion 35
             versionCode 1
             versionName "1.0"
         }
@@ -114,11 +101,7 @@ repositories {
 }
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    // Dependencia de Firestore
-    //implementation 'com.google.firebase:firebase-firestore-ktx:'
-    // Dependencia de Authentication
-    //implementation 'com.google.firebase:firebase-auth-ktx'
 }
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(17)
 }

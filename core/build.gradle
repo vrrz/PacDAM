@@ -13,5 +13,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(17)
+    //jvmToolchain(8)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    sourceCompatibility = "17" // Asegura la compatibilidad de fuente para Java
+    targetCompatibility = "17" // Asegura la compatibilidad de destino para Java
 }
