@@ -27,20 +27,20 @@ android {
         versionCode 1
         versionName "1.0"
     }
-   /* signingConfigs {
+    signingConfigs {
         release {
-            storeFile file("path/to/your/keystore.jks")
-            storePassword "yourKeystorePassword"
-            keyAlias "yourKeyAlias"
-            keyPassword "yourKeyPassword"
+            storeFile file("../pacdam-key.jks")
+            storePassword "KgmmNDCp3-TUHY:vKqPMXb34v.NS4Q"
+            keyAlias "pacdam-key"
+            keyPassword "KgmmNDCp3-TUHY:vKqPMXb34v.NS4Q"
         }
-    }*/
+    }
     buildTypes {
         release {
             minifyEnabled true
-            //shrinkResources true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            //signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
