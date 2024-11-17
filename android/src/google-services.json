@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "144548988282",
+    "project_id": "pacdam-9dfc9",
+    "storage_bucket": "pacdam-9dfc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144548988282:android:ba89972e60571fff6a02c3",
+        "android_client_info": {
+          "package_name": "vrrz.pacdam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3kmLyhPXQI3T9vDHUZ-8QN1wMZybsZgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
