@@ -1,12 +1,9 @@
 package vrrz.pacdam.engine.abstractions
 
-import vrrz.pacdam.engine.utils.variables.Pair
+import vrrz.pacdam.engine.utils.variables.Score
 
 interface DatabaseInterface {
-    fun saveScore(playerName: String, score: Int)
-    fun getTopScores(callback: ScoreCallback)
-
-    interface ScoreCallback {
-        fun onCallback(scores: List<Pair<String, Int>>)
-    }
+    fun createUser(email: String, passwordHash: String, username: String)
+    fun addScore(userId: String, levelId: Int, score: Int)
+    fun fetchUserScores(userId: String, callback: (List<Score>) -> Unit)
 }

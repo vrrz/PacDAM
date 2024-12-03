@@ -1,6 +1,7 @@
 package vrrz.pacdam.engine
 
 import com.badlogic.gdx.utils.Disposable
+import vrrz.pacdam.engine.abstractions.DatabaseInterface
 import vrrz.pacdam.engine.controllers.RzGraphicController
 import vrrz.pacdam.engine.controllers.RzTactilController
 import vrrz.pacdam.engine.utils.variables.RzEtapaJuego
@@ -15,6 +16,7 @@ class RzEngine private constructor() : Disposable {
     val graphics: RzGraphicController = RzGraphicController.INSTANCE
     var etapa: RzEtapaJuego = RzEtapaJuego.PANTALLA_INICIO
     val tactilController: RzTactilController = RzTactilController.INSTANCE
+    var database: DatabaseInterface? = null
 
     private var evento: Boolean = false
     private val eventoLock = ReentrantLock()
