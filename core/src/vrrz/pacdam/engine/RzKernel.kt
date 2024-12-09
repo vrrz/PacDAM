@@ -23,10 +23,12 @@ class RzKernel private constructor() {
 
 
         engine.database = this.database
-        database?.createUser("prueba@gmail.com", System.currentTimeMillis().toString(), "prueba")
+        /*
+        database?.createUser("prueba@gmail.com")
         database?.fetchUserScores("user") { scores ->
             println("Fetched scores: $scores")
         }
+        */
     }
 
 

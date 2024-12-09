@@ -7,10 +7,8 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
-import com.badlogic.gdx.utils.Disposable
+import vrrz.pacdam.engine.RzEngine
 import vrrz.pacdam.engine.utils.components.RzButton
-import java.util.LinkedList
-
 
 class RzGraphicController private constructor() {
     companion object {
@@ -19,6 +17,11 @@ class RzGraphicController private constructor() {
             Gdx.gl.glClearColor(c.r, c.g, c.b, a)
         }
     }
+
+    //private val atlas = TextureAtlas("skins/uiskin.atlas")
+    //private lateinit var pacmanAnimation: Animation<TextureRegion>
+    //private lateinit var ghostAnimations: Map<String, Animation<TextureRegion>>
+
 
     fun clear() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT) // Limpia el Buffer de la gráfica
@@ -45,6 +48,9 @@ class RzGraphicController private constructor() {
          batch.end()*/
     }
 
+    fun juego() {
+        println("Juego")
+    }
 
     var button1: RzButton? = null
     var batch: SpriteBatch? = null
@@ -55,7 +61,9 @@ class RzGraphicController private constructor() {
     val tamFrame = 16
     val frameDuration = 0.4f
 
+
     fun create() {
+        /*
         batch = SpriteBatch()
         texture1 = Texture(Gdx.files.internal("spritessheets/pacman-sprites.png"))
         val textureRegionPacman = TextureRegion.split(texture1, tamFrame, tamFrame)
@@ -67,7 +75,7 @@ class RzGraphicController private constructor() {
 
         animation = Animation(frameDuration, *frames)
         stateTime = 0f
-
+        */
     }
 
     fun pantallaInicio() {

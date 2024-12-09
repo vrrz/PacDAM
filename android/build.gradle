@@ -63,6 +63,11 @@ dependencies {
     implementation "com.google.firebase:firebase-firestore-ktx:25.1.1" // Firebase Firestore
     // implementation "com.google.firebase:firebase-auth-ktx:23.1.0"
     implementation 'androidx.core:core-ktx:1.15.0'
+
+    natives "com.badlogicgames.gdx:gdx-platform:1.11.0:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-platform:1.11.0:natives-arm64-v8a"
+    natives "com.badlogicgames.gdx:gdx-platform:1.11.0:natives-x86"
+    natives "com.badlogicgames.gdx:gdx-platform:1.11.0:natives-x86_64"
 }
 
 // called every time gradle gets executed, takes the native dependencies of

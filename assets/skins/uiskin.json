@@ -1,0 +1,62 @@
+{
+  "com.badlogic.gdx.graphics.Color": {
+    "darkBlue": {
+      "hex": "#00008BFF"
+    },
+    "lightBlue": {
+      "hex": "#ADD8E6FF",
+    },
+    "yellow": {
+      "hex":
+      "#FFFF00FF"
+    },
+    "white": {
+      "hex":
+      "#FFFFFFFF"
+    },
+    "darkGray": {
+      "hex":
+      "#333333FF"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "default": {
+      "font": "pacfont",
+      "fontColor": "white"
+    },
+    "large": {
+      "font": "pacfont",
+      "fontColor": "white"
+    }
+  },
+  TintedDrawable: {
+    lightBlueBackground: {
+      color: "lightBlue",
+      name: "base"
+    }
+    darkBlueBackground: {
+      color: "darkBlue",
+      name: "base"
+    }
+    yellowBackground: {
+      color: "yellow",
+      name: "base"
+    }
+  }
+  "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
+    "default": {
+      "font": "pacfont",
+      "fontColor": "white",
+      "cursor": "cursor",
+      "background": "lightBlueBackground"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+    "default": {
+      "font": "pacfont",
+      "fontColor": "white",
+      "up": "darkBlueBackground",
+      "down": "yellowBackground"
+    }
+  }
+}

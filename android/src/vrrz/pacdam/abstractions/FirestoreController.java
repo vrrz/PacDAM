@@ -3,12 +3,11 @@ package vrrz.pacdam.abstractions;
 import androidx.annotation.NonNull;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,31 +19,36 @@ public class FirestoreController implements DatabaseInterface {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
-    public void createUser(String email, String passwordHash, String username) {
-        Map<String, Object> userData = new HashMap<>();
-        userData.put("email", email);
-        userData.put("passwordHash", passwordHash);
-        userData.put("username", username);
-        userData.put("createdAt", System.currentTimeMillis());
+    public void fetchUserScores(@NonNull String userId, @NonNull Function1<? super List<Score>, Unit> callback) {
 
-        db.collection("Usuarios")
-                .add(userData)
-                .addOnSuccessListener(documentReference ->
-                        System.out.println("User created with ID: " + documentReference.getId()))
-                .addOnFailureListener(e ->
-                        System.err.println("Error creating user: " + e));
     }
 
     @Override
-    public void addScore(String userId, int levelId, int score) {
+    public void createUser(@NonNull String email, @NonNull Function1<? super Boolean, Unit> callback) {
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("email", email);
+        userData.put("created_at", System.currentTimeMillis());
+        db.collection("users")
+                .add(userData)
+                .addOnSuccessListener(documentReference -> {
+                    System.out.println(documentReference.toString());
+                    callback.invoke(true);
+                })
+                .addOnFailureListener(e -> {
+                    System.err.println("Hubo un error y no se pudo crear el usuario con email " + email);
+                    callback.invoke(false);
+                });
+    }
+
+    @Override
+    public void addScore(@NonNull String userId, int score, @NonNull Function0<Unit> callback) {
         Map<String, Object> scoreData = new HashMap<>();
-        scoreData.put("levelId", levelId);
         scoreData.put("score", score);
         scoreData.put("createdAt", System.currentTimeMillis());
 
-        db.collection("Usuarios")
+        db.collection("users")
                 .document(userId)
-                .collection("Puntuaciones")
+                .collection("points")
                 .add(scoreData)
                 .addOnSuccessListener(documentReference ->
                         System.out.println("Score added successfully"))
@@ -53,37 +57,19 @@ public class FirestoreController implements DatabaseInterface {
     }
 
     @Override
-    public void fetchUserScores(@NonNull String userId, @NonNull Function1<? super List<Score>, Unit> callback) {
-        db.collection("Usuarios")
-                .document(userId)
-                .collection("Puntuaciones")
+    public void checkUserExists(@NonNull String email, @NonNull Function1<? super Boolean, Unit> callback) {
+        db.collection("users")
+                .whereEqualTo("email", email)
                 .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<Score> scores = new ArrayList<>();
-                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        int levelId = document.getLong("levelId").intValue();
-                        int score = document.getLong("score").intValue();
-                        long createdAt = document.getLong("createdAt");
-                        scores.add(new Score(levelId, score, createdAt));
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        boolean exists = !task.getResult().isEmpty();
+                        System.out.println("User exists with email: " + email + " -> " + exists);
+                        callback.invoke(exists);
+                    } else {
+                        System.err.println("Error checking user existence: " + task.getException());
+                        callback.invoke(false);
                     }
-                    callback.invoke(scores);
-                })
-                .addOnFailureListener(e -> {
-                    callback.invoke(new ArrayList<>()); // Devuelve lista vacía en caso de error
                 });
     }
-
-    /*
-
-    dbController.fetchUserScores("userId123", new Function1<List<Score>, Unit>() {
-    @Override
-    public Unit invoke(List<Score> scores) {
-            for (Score score : scores) {
-                System.out.println("Level: " + score.getLevelId() + ", Score: " + score.getScore());
-            }
-            return Unit.INSTANCE;
-        }
-    });
-
-     */
 }

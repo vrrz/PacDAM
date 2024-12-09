@@ -14,12 +14,12 @@ public class AndroidLauncher extends AndroidApplication {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.loadLibrary("gdx");
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         // Inicialziar Firebase
         FirebaseApp.initializeApp(this);
         // Instanciar abstracción controlador base de datos, en este caso, Firestore
         FirestoreController dbController = new FirestoreController();
         initialize(new PacDamMain(dbController), config);
-        System.loadLibrary("gdx");
     }
 }
