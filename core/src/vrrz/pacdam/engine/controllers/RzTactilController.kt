@@ -38,7 +38,6 @@ class RzTactilController() : InputProcessor {
     override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
         setVector(x = screenX, y = screenY)
         direcciones.removeAll { true }
-        println("touch Down")
         return true
     }
 
@@ -47,7 +46,7 @@ class RzTactilController() : InputProcessor {
         dragged = direcciones.size == maxDirecciones
         direccion = if (dragged) direcciones.last() else null
         direcciones.removeAll { true }
-        println("touch Up")
+        if (direccion != null) engine.direccion = direccion as RzDireccion
         return engine.evento(valor = true)
     }
 

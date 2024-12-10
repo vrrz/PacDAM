@@ -61,8 +61,12 @@ class LoginScene(private val engine: RzEngine) {
         stage.addActor(table)
     }
 
+    var shown = false
     fun show() {
-        Gdx.input.inputProcessor = stage // Cambiar InputProcessor al Stage
+        if (!shown) {
+            Gdx.input.inputProcessor = stage // Cambiar InputProcessor al Stage
+            shown = true
+        }
     }
 
     fun render() {

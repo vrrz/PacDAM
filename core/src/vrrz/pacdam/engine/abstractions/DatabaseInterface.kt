@@ -6,7 +6,7 @@ interface DatabaseInterface {
     // fun createUser(email: String, passwordHash: String, username: String)
 
     fun createUser(email: String, callback: (Boolean) -> Unit)
-    fun addScore(userId: String, score: Int, callback: () -> Unit)
+    fun addScore(email: String, score: Int, callback: (Boolean) -> Unit)
     fun fetchUserScores(userId: String, callback: (List<Score>) -> Unit)
 
     /**

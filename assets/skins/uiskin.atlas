@@ -1,329 +1,329 @@
 uiskin.png
+pacdot
+  rotate: false
+  xy: 10, 80
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
 pac_r0
   rotate: false
-  xy: 0, 105
+  xy: 0, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pac_r1
   rotate: false
-  xy: 15, 105
+  xy: 15, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pac_l0
   rotate: false
-  xy: 0, 90
+  xy: 0, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
-pacman_l1
+pac_l1
   rotate: false
-  xy: 15, 90
+  xy: 15, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pac_u0
   rotate: false
-  xy: 0, 75
+  xy: 0, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pac_u1
   rotate: false
-  xy: 15, 75
+  xy: 15, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pac_d0
   rotate: false
-  xy: 0, 60
+  xy: 0, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pac_d1
   rotate: false
-  xy: 15, 60
+  xy: 15, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pac_o
   rotate: false
-  xy: 15, 45
+  xy: 15, 60
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 bly_r0
   rotate: false
-  xy: 30, 105
+  xy: 30, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 bly_r1
   rotate: false
-  xy: 45, 105
+  xy: 45, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 bly_l0
   rotate: false
-  xy: 60, 105
+  xy: 60, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 bly_l1
   rotate: false
-  xy: 75, 105
+  xy: 75, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 bly_u0
   rotate: false
-  xy: 90, 105
+  xy: 90, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 bly_u1
   rotate: false
-  xy: 105, 105
+  xy: 105, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 bly_d0
   rotate: false
-  xy: 120, 105
+  xy: 120, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 bly_d1
   rotate: false
-  xy: 135, 105
+  xy: 135, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pyn_r0
   rotate: false
-  xy: 30, 90
+  xy: 30, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pyn_r1
   rotate: false
-  xy: 45, 90
+  xy: 45, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pyn_l0
   rotate: false
-  xy: 60, 90
+  xy: 60, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pyn_l1
   rotate: false
-  xy: 75, 90
+  xy: 75, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pyn_u0
   rotate: false
-  xy: 90, 90
+  xy: 90, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pyn_u1
   rotate: false
-  xy: 105, 90
+  xy: 105, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pyn_d0
   rotate: false
-  xy: 120, 90
+  xy: 120, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 pyn_d1
   rotate: false
-  xy: 135, 90
+  xy: 135, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 ink_r0
   rotate: false
-  xy: 30, 75
+  xy: 30, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 ink_r1
   rotate: false
-  xy: 45, 75
+  xy: 45, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 ink_l0
   rotate: false
-  xy: 60, 75
+  xy: 60, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 ink_l1
   rotate: false
-  xy: 75, 75
+  xy: 75, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 ink_u0
   rotate: false
-  xy: 90, 75
+  xy: 90, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 ink_u1
   rotate: false
-  xy: 105, 75
+  xy: 105, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 ink_d0
   rotate: false
-  xy: 120, 75
+  xy: 120, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 ink_d1
   rotate: false
-  xy: 135, 75
+  xy: 135, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cly_r0
   rotate: false
-  xy: 30, 60
+  xy: 30, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cly_r1
   rotate: false
-  xy: 45, 60
+  xy: 45, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cly_l0
   rotate: false
-  xy: 60, 60
+  xy: 60, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cly_l1
   rotate: false
-  xy: 75, 60
+  xy: 75, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cly_u0
   rotate: false
-  xy: 90, 60
+  xy: 90, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cly_u1
   rotate: false
-  xy: 105, 60
+  xy: 105, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cly_d0
   rotate: false
-  xy: 120, 60
+  xy: 120, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cly_d1
   rotate: false
-  xy: 135, 60
+  xy: 135, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 f_00
   rotate: false
-  xy: 0, 150
-  size: 15, 15
-  orig: 15, 15
-  offset: 0, 0
-  index: -1
-f_00
-  rotate: false
-  xy: 150, 105
+  xy: 150, 0
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 f_01
   rotate: false
-  xy: 150, 90
+  xy: 150, 15
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 f_10
   rotate: false
-  xy: 150, 75
+  xy: 150, 30
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 f_11
   rotate: false
-  xy: 150, 60
+  xy: 150, 45
   size: 15, 15
   orig: 15, 15
   offset: 0, 0
   index: -1
 cursor
   rotate: false
-  xy: 0, 30
+  xy: 0, 60
   size: 2, 30
   orig: 2, 30
   offset: 0, 0

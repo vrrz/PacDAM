@@ -41,19 +41,35 @@ public class FirestoreController implements DatabaseInterface {
     }
 
     @Override
-    public void addScore(@NonNull String userId, int score, @NonNull Function0<Unit> callback) {
-        Map<String, Object> scoreData = new HashMap<>();
-        scoreData.put("score", score);
-        scoreData.put("createdAt", System.currentTimeMillis());
-
+    public void addScore(@NonNull String email, int score, @NonNull Function1<? super Boolean, Unit> callback) {
         db.collection("users")
-                .document(userId)
-                .collection("points")
-                .add(scoreData)
-                .addOnSuccessListener(documentReference ->
-                        System.out.println("Score added successfully"))
-                .addOnFailureListener(e ->
-                        System.err.println("Error adding score: " + e));
+                .whereEqualTo("email", email)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        // Se obtiene el primer documento que coincide con el email
+                        String userId = querySnapshot.getDocuments().get(0).getId();
+                        Map<String, Object> scoreData = new HashMap<>();
+                        scoreData.put(String.valueOf(System.currentTimeMillis()), score);
+
+                        // Agregamos la puntuación a la colección 'points' del usuario
+                        db.collection("users")
+                                .document(userId)
+                                .collection("points")
+                                .add(scoreData)
+                                .addOnSuccessListener(documentReference -> {
+                                    callback.invoke(true);
+                                })
+                                .addOnFailureListener(e -> {
+                                    callback.invoke(false);
+                                });
+                    } else {
+                        callback.invoke(false);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    callback.invoke(false);
+                });
     }
 
     @Override
