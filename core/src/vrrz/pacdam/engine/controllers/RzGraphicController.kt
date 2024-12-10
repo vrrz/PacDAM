@@ -4,13 +4,11 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.graphics.g2d.TextureRegion
 import vrrz.pacdam.engine.actors.Ghost
 import vrrz.pacdam.engine.actors.Laberinto
 import vrrz.pacdam.engine.actors.PacMan
-import vrrz.pacdam.engine.utils.components.RzButton
+import vrrz.pacdam.engine.actors.TipoFantasma
 import vrrz.pacdam.engine.utils.loaders.SkinLoader
 import vrrz.pacdam.engine.utils.variables.RzDireccion
 
@@ -22,12 +20,7 @@ class RzGraphicController private constructor() {
         }
         val tamFrame = 15F
         fun scale() = (Gdx.graphics.width / Laberinto.laberinto[0].size.toFloat()) / tamFrame
-
     }
-    //private val atlas = TextureAtlas("skins/uiskin.atlas")
-    //private lateinit var pacmanAnimation: Animation<TextureRegion>
-    //private lateinit var ghostAnimations: Map<String, Animation<TextureRegion>>
-
 
     fun clear() {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f) // Color negro de fondo
@@ -36,10 +29,13 @@ class RzGraphicController private constructor() {
     }
 
     var pacman: PacMan? = null
-    var ghosts: List<Ghost> = listOf()
+    var blinky: Ghost? = null
     private var eventos: List<() -> Boolean> = listOf(
         {
             Laberinto.pacdots.all { i -> i.all { pacdot -> pacdot?.comido ?: true } }
+        },
+        {
+            blinky?.interactuarConPacMan(pacman!!) ?: false
         }
     )
     lateinit var batch: SpriteBatch
@@ -62,8 +58,8 @@ class RzGraphicController private constructor() {
         scaledHeight = textureHeight * scaleLaberinto
 
         pacman = PacMan(skin.atlas)
+        blinky = Ghost(skin.atlas, TipoFantasma.BLINKY, velocidadCasillasPorSegundo = 5F)
     }
-
 
     fun renderJuego(pacmanDirection: RzDireccion, lambda: (Int) -> Unit) {
         direccion = pacmanDirection
@@ -71,6 +67,9 @@ class RzGraphicController private constructor() {
         for ((i, event) in eventos.withIndex()) {
             if (event()) {
                 lambda(i)
+                Thread.sleep(2000)
+                pacman?.start()
+                blinky?.start()
                 break
             }
         }
@@ -83,6 +82,7 @@ class RzGraphicController private constructor() {
         batch.begin()
         printBackground()
         pacman?.render(batch, direccion)
+        blinky?.render(batch, pacman!!)
         Laberinto.render(batch, pacman!!)
         batch.end()
     }
@@ -97,20 +97,9 @@ class RzGraphicController private constructor() {
         )
     }
 
-    /*fun pantallaInicio() {
-        clear()
-        stateTime += Gdx.graphics.deltaTime
-        val currentFrame = animation?.getKeyFrame(stateTime, true)
-        batch.begin()
-        batch.draw(
-            currentFrame,
-            0f,
-            0f,
-            currentFrame!!.regionWidth.times(scale()),
-            currentFrame.regionHeight.times(scale())
-        )
-        batch.end()
-    }*/
+    fun resetAll() {
+        Laberinto.resetPacdots()
+    }
 
     fun dispose() {
         batch.dispose()

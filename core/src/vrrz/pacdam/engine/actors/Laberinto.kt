@@ -7,7 +7,36 @@ import vrrz.pacdam.engine.utils.loaders.SkinLoader
 
 object Laberinto {
     val laberinto: Array<Array<Int>> = arrayOf(
-        arrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 0
+        arrayOf(
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ), // 0
         arrayOf(0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0),
         arrayOf(0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0),
         arrayOf(0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0),
@@ -18,7 +47,36 @@ object Laberinto {
         arrayOf(0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0),
         arrayOf(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
         arrayOf(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
-        arrayOf(0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0), // 11
+        arrayOf(
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ), // 11
         arrayOf(0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0),
         arrayOf(0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0),
         arrayOf(0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0),
@@ -40,7 +98,7 @@ object Laberinto {
         arrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     )
 
-    val pacdots: List<List<PacDot?>>
+    var pacdots: List<List<PacDot?>>
 
     init {
         pacdots = laberinto.mapIndexed { y, fila ->
@@ -57,6 +115,27 @@ object Laberinto {
             }
         }
     }
+
+    fun resetPacdots() {
+        pacdots = laberinto.mapIndexed { y, fila ->
+            fila.mapIndexed { x, celda ->
+                if (celda == 1) PacDot(SkinLoader.skin.atlas, x, y) else null
+            }
+        }
+    }
+
+    fun calcularPuntuacion(): Int {
+        var puntuacion = 0
+        pacdots.forEach { fila ->
+            fila.forEach { pacdot ->
+                if (pacdot?.comido == true) {
+                    puntuacion += 10
+                }
+            }
+        }
+        return puntuacion
+    }
+
 
     fun x(x: Int) = x * RzGraphicController.scale() * RzGraphicController.tamFrame
     fun y(y: Int) =

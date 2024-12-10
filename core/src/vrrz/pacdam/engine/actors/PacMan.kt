@@ -25,6 +25,14 @@ class PacMan(
     var y: Int = 23
     private var realX: Float = Laberinto.x(x)
     private var realY: Float = Laberinto.y(y)
+    fun start() {
+        x = 13
+        y = 23
+        realX = Laberinto.x(x)
+        realY = Laberinto.y(y)
+        estado = Estado.CASILLA
+        direccion = RzDireccion.DERECHA
+    }
 
     private lateinit var animation: Animation<TextureRegion>
 

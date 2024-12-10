@@ -3,6 +3,7 @@ package vrrz.pacdam.engine
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Disposable
 import vrrz.pacdam.engine.abstractions.DatabaseInterface
+import vrrz.pacdam.engine.actors.Laberinto
 import vrrz.pacdam.engine.controllers.RzGraphicController
 import vrrz.pacdam.engine.controllers.RzTactilController
 import vrrz.pacdam.engine.controllers.UserController
@@ -80,6 +81,10 @@ class RzEngine private constructor() : Disposable {
             }
         } else {
             etapa = RzEtapaJuego.FIN
+            val puntuacion = Laberinto.calcularPuntuacion()
+            database?.addScore(user.email!!, puntuacion) {
+                println("Puntuación alñadida")
+            }
         }
     }
 
@@ -100,6 +105,8 @@ class RzEngine private constructor() : Disposable {
 
     fun resetAll() {
         vidas = 3
+        Gdx.input.inputProcessor = tactilController
+        graphics.resetAll()
         etapa = RzEtapaJuego.JUEGO
     }
 
